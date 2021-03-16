@@ -9,38 +9,38 @@ class Products extends StatefulWidget {
 class _ProductsState extends State<Products> {
   var product_list = [
     {
-      "name": "Blazer",
-      "picture": "images/products/blazer1.jpeg",
+      "name": "Burger",
+      "picture": "images/products/burger.jpg",
       "old_price": 120,
       "price": 85,
     },
     {
-      "name": "Red Dress",
-      "picture": "images/products/dress1.jpeg",
+      "name": "Noodles",
+      "picture": "images/products/noodles.jpg",
       "old_price": 100,
       "price": 60,
     },
     {
-      "name": "Heels",
-      "picture": "images/products/hills1.jpeg",
+      "name": "Pasta",
+      "picture": "images/products/pasta.jpg",
       "old_price": 150,
       "price": 100,
     },
     {
-      "name": "Pants",
-      "picture": "images/products/pants1.jpg",
+      "name": "Pizza",
+      "picture": "images/products/pizza.jpg",
       "old_price": 80,
       "price": 50,
     },
     {
-      "name": "Shoes",
-      "picture": "images/products/shoe1.jpg",
+      "name": "Sprimg Roll",
+      "picture": "images/products/spring_roll.jpg",
       "old_price": 100,
       "price": 60,
     },
     {
-      "name": "Skirt",
-      "picture": "images/products/skt1.jpeg",
+      "name": "Triple rice",
+      "picture": "images/products/triple_rice.jpg",
       "old_price": 90,
       "price": 55,
     },
@@ -92,24 +92,22 @@ class Single_prod extends StatelessWidget {
                       ))),
               child: GridTile(
                 footer: Container(
-                  color: Colors.white70,
-                  child: ListTile(
-                    leading: Text(
-                      prod_name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    title: Text(
-                      "\$$prod_price",
-                      style: TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.w800),
-                    ),
-                    subtitle: Text(
-                      "\$$prod_old_price",
-                      style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.w800,
-                          decoration: TextDecoration.lineThrough),
-                    ),
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          prod_name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                        ),
+                      ),
+                      new Text(
+                        "\$$prod_price",
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
                 ),
                 child: Image.asset(

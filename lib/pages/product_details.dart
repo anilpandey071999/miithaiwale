@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fooddelivery/main.dart';
+
+import 'package:fooddelivery/pages/cart.dart';
 
 class ProductDetails extends StatefulWidget {
   final product_name;
@@ -24,7 +27,12 @@ class _ProductDetailsState extends State<ProductDetails> {
       appBar: new AppBar(
         elevation: 0.1,
         backgroundColor: Colors.redAccent,
-        title: Text('Fashion App'),
+        title: InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => new HomePage()));
+            },
+            child: Text('Fashion App')),
         actions: [
           new IconButton(
               icon: Icon(
@@ -32,12 +40,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 color: Colors.white,
               ),
               onPressed: () {}),
-          new IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
-              onPressed: () {})
         ],
       ),
       body: new ListView(
@@ -82,70 +84,6 @@ class _ProductDetailsState extends State<ProductDetails> {
           //==================The first Buttons================
           Row(
             children: [
-              //==========The Size button=========
-              Expanded(
-                  child: MaterialButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return new AlertDialog(
-                          title: new Text("Size"),
-                          content: new Text("Choose the Size"),
-                          actions: [
-                            new MaterialButton(
-                              onPressed: () {
-                                Navigator.of(context).pop(context);
-                              },
-                              child: new Text("close"),
-                            )
-                          ],
-                        );
-                      });
-                },
-                color: Colors.white,
-                textColor: Colors.grey,
-                elevation: 0.2,
-                child: Row(
-                  children: [
-                    Expanded(child: new Text("Size")),
-                    Expanded(child: new Icon(Icons.arrow_drop_down)),
-                  ],
-                ),
-              )),
-
-              //==========The Color button=========
-              Expanded(
-                  child: MaterialButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return new AlertDialog(
-                          title: new Text("Color"),
-                          content: new Text("Choose a Color"),
-                          actions: [
-                            new MaterialButton(
-                              onPressed: () {
-                                Navigator.of(context).pop(context);
-                              },
-                              child: new Text("close"),
-                            )
-                          ],
-                        );
-                      });
-                },
-                color: Colors.white,
-                textColor: Colors.grey,
-                elevation: 0.2,
-                child: Row(
-                  children: [
-                    Expanded(child: new Text("Color")),
-                    Expanded(child: new Icon(Icons.arrow_drop_down)),
-                  ],
-                ),
-              )),
-
               //==========The Quantity button=========
               Expanded(
                   child: MaterialButton(
@@ -186,7 +124,10 @@ class _ProductDetailsState extends State<ProductDetails> {
               //==========The Buy Now button=========
               Expanded(
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => new Cart()));
+                  },
                   color: Colors.red,
                   textColor: Colors.white,
                   elevation: 0.2,
@@ -267,8 +208,128 @@ class _ProductDetailsState extends State<ProductDetails> {
               )
             ],
           ),
+
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Similar Products"),
+          ),
+
+          //SIMILAR PRODUCTS SECTION
+          Container(
+            height: 360.0,
+            child: Similar_products(),
+          )
         ],
       ),
+    );
+  }
+}
+
+class Similar_products extends StatefulWidget {
+  @override
+  _Similar_productsState createState() => _Similar_productsState();
+}
+
+class _Similar_productsState extends State<Similar_products> {
+  var product_list = [
+    {
+      "name": "Burger",
+      "picture": "images/products/burger.jpg",
+      "old_price": 120,
+      "price": 85,
+    },
+    {
+      "name": "Pasta",
+      "picture": "images/products/pasta.jpg",
+      "old_price": 150,
+      "price": 100,
+    },
+    {
+      "name": "Sprimg Roll",
+      "picture": "images/products/spring_roll.jpg",
+      "old_price": 100,
+      "price": 60,
+    },
+    {
+      "name": "Triple rice",
+      "picture": "images/products/triple_rice.jpg",
+      "old_price": 90,
+      "price": 55,
+    },
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      itemCount: product_list.length,
+      gridDelegate:
+          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      itemBuilder: (BuildContext context, int index) {
+        return Similar_Single_prod(
+          prod_name: product_list[index]['name'],
+          prod_picture: product_list[index]['picture'],
+          prod_old_price: product_list[index]['old_price'],
+          prod_price: product_list[index]['price'],
+        );
+      },
+    );
+  }
+}
+
+class Similar_Single_prod extends StatelessWidget {
+  final prod_name;
+  final prod_picture;
+  final prod_old_price;
+  final prod_price;
+
+  Similar_Single_prod(
+      {this.prod_name,
+      this.prod_picture,
+      this.prod_old_price,
+      this.prod_price});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Hero(
+          tag: prod_name,
+          child: Material(
+            child: InkWell(
+              onTap: () => Navigator.of(context).push(new MaterialPageRoute(
+                  //here passing values of products to product detials page
+                  builder: (context) => new ProductDetails(
+                        product_name: prod_name,
+                        product_picture: prod_picture,
+                        product_old_price: prod_old_price,
+                        product_new_price: prod_price,
+                      ))),
+              child: GridTile(
+                footer: Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          prod_name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16.0),
+                        ),
+                      ),
+                      new Text(
+                        "\$$prod_price",
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+                child: Image.asset(
+                  prod_picture,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          )),
     );
   }
 }

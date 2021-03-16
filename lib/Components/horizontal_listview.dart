@@ -4,37 +4,29 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100.0,
+      height: 120.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           Category(
-            image_location: 'images/cats/tshirt.png',
-            image_caption: 'T-Shirts',
+            image_location: 'images/cats/bk.png',
+            image_caption: 'Burger King',
           ),
           Category(
-            image_location: 'images/cats/dress.png',
-            image_caption: 'Dress',
+            image_location: 'images/cats/cafe.png',
+            image_caption: 'Cafe',
           ),
           Category(
-            image_location: 'images/cats/formal.png',
-            image_caption: 'Formal',
+            image_location: 'images/cats/hotel.png',
+            image_caption: 'Hotels',
           ),
           Category(
-            image_location: 'images/cats/informal.png',
-            image_caption: 'Informal',
+            image_location: 'images/cats/macd.png',
+            image_caption: 'Mac Donald\'s',
           ),
           Category(
-            image_location: 'images/cats/jeans.png',
-            image_caption: 'Jeans',
-          ),
-          Category(
-            image_location: 'images/cats/shoe.png',
-            image_caption: 'Shoes',
-          ),
-          Category(
-            image_location: 'images/cats/accessories.png',
-            image_caption: 'Accessories',
+            image_location: 'images/cats/dom.png',
+            image_caption: 'Domino\'s',
           ),
         ],
       ),
@@ -64,7 +56,10 @@ class Category extends StatelessWidget {
             ),
             subtitle: Container(
               alignment: Alignment.topCenter,
-              child: Text(image_caption),
+              child: Text(
+                image_caption,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ),
