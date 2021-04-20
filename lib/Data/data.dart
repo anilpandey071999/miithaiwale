@@ -1,4 +1,4 @@
-//Data arrange and display
+//Data arranged and display
 final sweetliked = User(
   sweet: [
     Sweets(
@@ -38,36 +38,26 @@ final _restaurant0 = NearbyShop(
   imageUrl: 'assets/restaurant0.jpg',
   name: 'Restaurant 0',
   address: 'Chembur West, Mumbai',
-  //rating: 5,
-  //menu: [_burrito, _steak, _pasta, _ramen, _pancakes, _burger, _pizza, _salmon],
 );
 final _restaurant1 = NearbyShop(
   imageUrl: 'assets/restaurant1.jpg',
   name: 'Restaurant 1',
   address: 'Chembur West, Mumbai',
-  //rating: 4,
-  //menu: [_steak, _pasta, _ramen, _pancakes, _burger, _pizza],
-);
+ );
 final _restaurant2 = NearbyShop(
   imageUrl: 'assets/restaurant2.jpg',
   name: 'Restaurant 2',
   address: 'Chembur West, Mumbai',
-  //rating: 4,
-  //menu: [_steak, _pasta, _pancakes, _burger, _pizza, _salmon],
 );
 final _restaurant3 = NearbyShop(
   imageUrl: 'assets/restaurant3.jpg',
   name: 'Restaurant 3',
   address: 'Chembur West, Mumbai',
-  //rating: 2,
-  //menu: [_burrito, _steak, _burger, _pizza, _salmon],
 );
 final _restaurant4 = NearbyShop(
   imageUrl: 'assets/restaurant4.jpg',
   name: 'Restaurant 4',
   address: 'Chembur West, Mumbai',
-  //rating: 3,
-  //menu: [_burrito, _ramen, _pancakes, _salmon],
 );
 
 final List<NearbyShop> nearbyshop = [
