@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:miithaiwale/Home/drawer.dart';
 import 'package:miithaiwale/Home/near_by_shops.dart';
 import 'package:miithaiwale/Home/search_bar.dart';
-import 'package:miithaiwale/Home/sweet_liked.dart';
+
+import 'Home/drawer.dart';
+import 'Home/sweet_liked.dart';
 
 class HomePage extends StatelessWidget {
   @override

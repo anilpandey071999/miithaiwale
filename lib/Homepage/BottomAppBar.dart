@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:miithaiwale/Home/drawer.dart';
 import 'package:miithaiwale/Homepage/homepage.dart';
-import 'package:miithaiwale/widgets/drawer.dart';
 
 class BottomBar extends StatefulWidget {
   @override

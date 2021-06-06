@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:miithaiwale/Homepage/customLoader.dart';
 
 import 'Homepage/BottomAppBar.dart';
-import 'Homepage/homepage.dart';
 
 void main() {
   runApp(MaterialApp(

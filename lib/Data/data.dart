@@ -23,14 +23,11 @@ final sweetliked = User(
 );
 
 //Data of Sweets You Like
-final gulabjamun =
-    Food(imageUrl: 'assets/gulabjamun.jpeg', name: 'Gulab Jamun', price: 50);
+final gulabjamun = Food(imageUrl: 'assets/gulabjamun.jpeg', name: 'Gulab Jamun', price: 50);
 final jalebi = Food(imageUrl: 'assets/jalebi.jpeg', name: 'Jalebi', price: 70);
-final kajukatli =
-    Food(imageUrl: 'assets/kajukatli.jpeg', name: 'Kaju Katli', price: 150);
+final kajukatli = Food(imageUrl: 'assets/kajukatli.jpeg', name: 'Kaju Katli', price: 150);
 final laddoo = Food(imageUrl: 'assets/laddoo.jpeg', name: 'Laddoo', price: 40);
-final rasgulla =
-    Food(imageUrl: 'assets/rasgulla.jpeg', name: 'Rasgulla', price: 60);
+final rasgulla = Food(imageUrl: 'assets/rasgulla.jpeg', name: 'Rasgulla', price: 60);
 final burfi = Food(imageUrl: 'assets/burfi.jpeg', name: 'Burfi', price: 100);
 
 //Near By Shop Data

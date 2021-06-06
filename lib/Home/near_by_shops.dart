@@ -81,9 +81,9 @@ class _NearByShopState extends State<NearByShop> {
           child: Text(
             'Best Shops Near You',
             style: TextStyle(
-              fontSize: 20.0,
+              fontSize: 18.0,
               fontWeight: FontWeight.w600,
-              letterSpacing: 1.0,
+              letterSpacing: 0.5,
             ),
           ),
         ),
