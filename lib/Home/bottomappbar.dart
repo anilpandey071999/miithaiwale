@@ -1,63 +1,72 @@
-// import 'package:flutter/material.dart';
-// import 'package:miithaiwale/Constants/colors.dart';
-// import 'package:miithaiwale/Pages/donate.dart';
-// import 'package:miithaiwale/Pages/home.dart';
-// import 'package:miithaiwale/Pages/membership.dart';
-// import 'package:miithaiwale/Pages/myorder.dart';
+import 'package:flutter/material.dart';
+import 'package:miithaiwale/Home/drawer.dart';
+import 'package:miithaiwale/Home/homepage.dart';
 
-// class BottomBar extends StatefulWidget {
-//   @override
-//   _BottomBarState createState() => _BottomBarState();
-// }
+class BottomBar extends StatefulWidget {
+  @override
+  _BottomBarState createState() => _BottomBarState();
+}
 
-// class _BottomBarState extends State<BottomBar> {
+class _BottomBarState extends State<BottomBar> {
+  int _currentIndex = 0;
 
-//   int _selectedIndex = 0;
-
-//   static List<Widget> _widgetOptions = <Widget>[
-//     Home(),
-//     MyOrder(),
-//     Membership(),
-//     Donate(),
-//   ];
-
-//   void _onItemTapped(int index) {
-//     setState(() {
-//       _selectedIndex = index;
-//     });
-//   }
-//   @override
-  
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       bottomNavigationBar: BottomNavigationBar(
-//         backgroundColor: AppColors.background,
-//           items: const <BottomNavigationBarItem>[
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.home),
-//               label: ("Home"),
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.shopping_cart),
-//               label: ("My Order"),
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.star_border_purple500_outlined),
-//               label: ("Membership"),
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(Icons.payment),
-//               label: ("Donate"),
-//             )
-//           ],
-//         currentIndex: _selectedIndex,
-//         selectedItemColor: AppColors.selectedcolor,
-//         unselectedItemColor: AppColors.unselectedcolor,
-//         showSelectedLabels: true,
-//         showUnselectedLabels: true,
-//         type: BottomNavigationBarType.fixed,
-//         onTap: _onItemTapped,
-//       ),
-//     );
-//   }
-// }
+  final tabs = [
+    Scaffold(
+      body: SafeArea(child: HomePage()),
+    ),
+    Center(
+      child: Text('No Favourites Added'),
+    ),
+    Center(
+      child: Text('No Notifications'),
+    ),
+    Center(
+      child: Text('No Notificationssssss'),
+    ),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70),
+        child: Text("MiithaiWale"),
+      ),
+      drawer: MyDrawer(),
+      body: tabs[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        //  selectedItemColor: Color(0xff474F85),
+        selectedItemColor: Color(0xff0075f6),
+        unselectedItemColor: Color(0x600075f6),
+        currentIndex: _currentIndex,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            activeIcon: Icon(Icons.shopping_cart),
+            label: 'My Order',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_border_purple500_outlined),
+            activeIcon: Icon(Icons.star_outlined),
+            label: ("Pro Membership"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle_outlined),
+            activeIcon: Icon(Icons.account_circle),
+            label: 'Account',
+          ),
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
+    );
+  }
+}
