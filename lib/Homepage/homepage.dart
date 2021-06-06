@@ -10,12 +10,26 @@ import '../widgets/drawer.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        SearchBar(),
-        SweetLiked(),
-        NearByShop(),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Miithaiwale"),
+        elevation: defaultTargetPlatform == TargetPlatform.android ? 5.0 : 0.0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.location_pin),
+            onPressed: () {},
+          )
+        ],
+      ),
+      drawer: MyDrawer(),
+      body: ListView(
+        children: [
+          SearchBar(),
+          SweetLiked(),
+          NearByShop(),
+        ],
+      ),
     );
   }
 }
