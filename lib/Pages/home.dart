@@ -12,13 +12,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   TabController tabController;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          SearchBar(),
-          SweetLiked(),
-          NearByShop(),
-        ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SearchBar(),
+            SweetLiked(),
+            NearByShop(),
+          ],
+        ),
       ),
     );
   }

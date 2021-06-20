@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:miithaiwale/Home/customLoader.dart';
+import 'package:miithaiwale/Pages/loginpage.dart';
 
 import 'Home/BottomAppBar.dart';
 
@@ -27,15 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 3), () {
       // if (FirebaseAuth.instance.currentUser == null) {
       // user not logged ==> Login Screen
       //   Navigator.pushAndRemoveUntil(context,
       //       MaterialPageRoute(builder: (_) => WalkThrough()), (route) => false);
       // } else {
       // user already logged in ==> Home Screen
+      // Navigator.pushAndRemoveUntil(context,
+      //     MaterialPageRoute(builder: (_) => BottomBar()), (route) => false);
       Navigator.pushAndRemoveUntil(context,
-          MaterialPageRoute(builder: (_) => BottomBar()), (route) => false);
+          MaterialPageRoute(builder: (_) => LoginPage()), (route) => false);
       // }
     });
   }

@@ -8,7 +8,7 @@ import 'package:miithaiwale/Home/sweet_liked.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text("Miithaiwale"),

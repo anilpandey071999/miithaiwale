@@ -27,10 +27,6 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70),
-        child: Text("MiithaiWale"),
-      ),
       drawer: MyDrawer(),
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -53,7 +49,7 @@ class _BottomBarState extends State<BottomBar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.star_border_purple500_outlined),
             activeIcon: Icon(Icons.star_outlined),
-            label: ("Pro Membership"),
+            label: ("Pro-Membership"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle_outlined),
