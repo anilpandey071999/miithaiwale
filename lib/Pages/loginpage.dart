@@ -50,7 +50,11 @@ class _LoginPageState extends State<LoginPage> {
                       maxLength: 10,
                       decoration: InputDecoration(
                         labelText: 'Phone Number',
-                        prefix: Text('+91'),
+                        hintText: "0123456789",
+                        prefix: Padding(
+                          padding: EdgeInsets.all(4),
+                          child: Text('+91'),
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                           borderSide: BorderSide(

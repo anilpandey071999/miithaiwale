@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "291762654330",
+    "project_id": "miithaiwale",
+    "storage_bucket": "miithaiwale.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291762654330:android:ebc1b2a15e744ba6ec7fc3",
+        "android_client_info": {
+          "package_name": "com.example.miithaiwale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291762654330-ngsptrbd820vm85pu4j6oicbtk4f75h9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.miithaiwale",
+            "certificate_hash": "412978f588c97a6777efdae618af20acd7562ee1"
+          }
+        },
+        {
+          "client_id": "291762654330-rgn6i1kmdhffe1beq6g73o46fh8c3o74.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.miithaiwale",
+            "certificate_hash": "bc0212cbfa18cbf0e878a4fb5710fb8656a7c958"
+          }
+        },
+        {
+          "client_id": "291762654330-0vv4q2aiver4nep8d7f0qvqgvff00e4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv6T7pD_By8S01mRK7em3F59Wv_GZqcXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291762654330-0vv4q2aiver4nep8d7f0qvqgvff00e4h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

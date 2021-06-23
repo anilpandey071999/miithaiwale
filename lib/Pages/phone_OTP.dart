@@ -1,6 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:miithaiwale/Home/bottomappbar.dart';
-import 'package:miithaiwale/Pages/home.dart';
 import 'package:otp_screen/otp_screen.dart';
 
 class PhoneOTP extends StatefulWidget {
@@ -11,40 +11,34 @@ class PhoneOTP extends StatefulWidget {
 }
 
 class _PhoneOTPState extends State<PhoneOTP> {
-  final GlobalKey<ScaffoldState> _scaffoldOtpKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String _verificationCode;
 
   Future<String> _validateOtp(String otp) async {
-    print(otp);
-    if (otp == '000000') {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => BottomBar()));
+    // print(otp);
+    // if (otp == '000000') {
+    //   Navigator.push(
+    //       context, MaterialPageRoute(builder: (context) => BottomBar()));
+    // }
+    await Future.delayed(Duration(milliseconds: 2000));
+    try {
+      await FirebaseAuth.instance
+          .signInWithCredential(PhoneAuthProvider.credential(
+              verificationId: _verificationCode, smsCode: otp))
+          .then((value) async {
+        if (value.user != null) {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => BottomBar()),
+              (route) => false);
+        }
+      });
+    } catch (e) {
+      FocusScope.of(context).unfocus();
+      _scaffoldKey.currentState
+          .showSnackBar((SnackBar(content: Text('invalid OTP'))));
     }
-    //   await Future.delayed(Duration(milliseconds: 2000));
-    //   try {
-    //     await FirebaseAuth.instance
-    //         .signInWithCredential(PhoneAuthProvider.credential(
-    //             verificationId: _verificationCode, smsCode: otp))
-    //         .then((value) async {
-    //       if (value.user != null) {
-    //         DocumentSnapshot doc = await userRef.doc(userNumber).get();
-    //         (!doc.exists)
-    //             ? Navigator.pushAndRemoveUntil(
-    //                 context,
-    //                 MaterialPageRoute(builder: (context) => AccountDetails()),
-    //                 (route) => false)
-    //             : Navigator.pushAndRemoveUntil(
-    //                 context,
-    //                 MaterialPageRoute(builder: (context) => HomePage()),
-    //                 (route) => false);
-    //       }
-    //     });
-    //   } catch (e) {
-    //     FocusScope.of(context).unfocus();
-    //     ScaffoldMessenger.of(context)
-    //         .showSnackBar((SnackBar(content: Text('invalid OTP'))));
-    //   }
-    //   return null;
+    return null;
   }
 
   void moveToNextScreen(pin) async {
@@ -69,7 +63,7 @@ class _PhoneOTPState extends State<PhoneOTP> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldOtpKey,
+      key: _scaffoldKey,
       body: OtpScreen(
         otpLength: 6,
         validateOtp: _validateOtp,
@@ -87,33 +81,34 @@ class _PhoneOTPState extends State<PhoneOTP> {
   }
 
   _verifyPhone() async {
-    //   await FirebaseAuth.instance.verifyPhoneNumber(
-    //       phoneNumber: '+91${widget.phone}',
-    //       verificationCompleted: (PhoneAuthCredential credential) async {
-    //         await FirebaseAuth.instance
-    //             .signInWithCredential(credential)
-    //             .then((value) async {
-    //           if (value.user != null) {
-    //             Navigator.pushAndRemoveUntil(
-    //                 context,
-    //                 MaterialPageRoute(builder: (context) => HomePage()),
-    //                 (route) => false);
-    //           }
-    //         });
-    //       },
-    //       verificationFailed: (FirebaseAuthException e) {
-    //         //print(e.message);
-    //       },
-    //       codeSent: (String verficationID, int resendToken) {
-    //         setState(() {
-    //           _verificationCode = verficationID;
-    //         });
-    //       },
-    //       codeAutoRetrievalTimeout: (String verificationID) {
-    //         setState(() {
-    //           _verificationCode = verificationID;
-    //         });
-    //       },
-    //       timeout: Duration(seconds: 120));
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+91${widget.phone}',
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await FirebaseAuth.instance
+            .signInWithCredential(credential)
+            .then((value) async {
+          if (value.user != null) {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => BottomBar()),
+                (route) => false);
+          }
+        });
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        print(e.message);
+      },
+      codeSent: (String verficationId, int resendToken) {
+        setState(() {
+          _verificationCode = verficationId;
+        });
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        setState(() {
+          _verificationCode = verificationId;
+        });
+      },
+      // timeout: Duration(seconds: 120)
+    );
   }
 }
